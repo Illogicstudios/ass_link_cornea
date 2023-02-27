@@ -1,6 +1,6 @@
 # Template Tool
 
-Template is a tool to ...
+Asset Linker Cornea is a tool that links lights to corneas of a character standin.
 
 ## How to install
 
@@ -8,38 +8,32 @@ You will need some files that several Illogic tools need. You can get them via t
 https://github.com/Illogicstudios/common
 
 
-You must specify the correct path of the installation folder in the template_main.py file :
+You must specify the correct path of the installation folder in the ```template_main.py``` file :
 ```python
 if __name__ == '__main__':
     # TODO specify the right path
-    install_dir = 'PATH/TO/template_tool'
+    install_dir = 'PATH/TO/ass_link_cornea'
     # [...]
 ```
+You also must add a file named ```cornea_by_char.py``` (see ```template_cornea_by_char.py```) that contains a
+dictionnary of all the cornea name for a character in a project :
+```python
+CORNEA_CHAR = {
+    "<PROJECT_DIR>": {
+        "<first_char_name>": ['cornea_L_char', 'cornea_R_char'],
+        "<second_char_name>": ['cornea_RcorneaShape', 'cornea_LcorneaShape'],
+        "<third_char_name>":['L_irisShape', 'R_irisShape'],
+        "<fourth_char_name>": ['corneasShape'],
+    }
+}
+```
+
 
 ---
 
-## Features
+## Link Lights to Cornea
 
 ### First Part
 
-<div align="center">
-  <span>
-    <img src="https://user-images.githubusercontent.com/94440879/216031775-d9ea680f-9a91-4f19-bc4c-6dd7fae4aa6b.png" width=50%>
-  </span>
-  <p weight="bold">Caption</p>
-  <br/>
-</div>
-
-[...]
-
-### Second Part
-
-<div align="center">
-  <span>
-    <img src="https://user-images.githubusercontent.com/94440879/216031775-d9ea680f-9a91-4f19-bc4c-6dd7fae4aa6b.png" width=50%>
-  </span>
-  <p weight="bold">Caption</p>
-  <br/>
-</div>
-
-[...]
+You must select first all the lights that you want to link to the corneas of the asset. Then select in last the 
+asset standin. You only have to run to link the corneas automatically.
