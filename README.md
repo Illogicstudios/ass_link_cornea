@@ -1,4 +1,4 @@
-# Template Tool
+# Asset Linker Cornea
 
 Asset Linker Cornea is a tool that links lights to corneas of a character standin.
 
