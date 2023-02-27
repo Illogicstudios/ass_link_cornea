@@ -3,13 +3,13 @@ import importlib
 
 if __name__ == '__main__':
     # TODO specify the right path
-    install_dir = 'PATH/TO/template'
+    install_dir = 'PATH/TO/ass_link_cornea'
     if not sys.path.__contains__(install_dir):
         sys.path.append(install_dir)
 
-    # TODO import right modules
     modules = [
-        "MayaTool"
+        "ass_link_cornea",
+        "cornea_by_char"
     ]
 
     from utils import *
@@ -18,13 +18,6 @@ if __name__ == '__main__':
     for module in modules:
         importlib.import_module(module)
 
-    # TODO import the app
-    from MayaTool import *
+    from ass_link_cornea import *
 
-    # TODO rename app variable and Class
-    try:
-        app.close()
-    except:
-        pass
-    app = MayaTool()
-    app.show()
+    ass_link_cornea.run()
