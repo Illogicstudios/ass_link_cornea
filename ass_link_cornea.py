@@ -16,23 +16,24 @@ def __retrieve_datas(cornea_dict):
         return
 
     asset = selection[-1]
-    asset_name = asset.name()
-    match = re.match(r"^(?:(.*)_[0-9]{2}|(.*))$",asset_name)
-    char_name = match.group(1) if match.group(1) is not None else match.group(2)
-    if char_name not in cornea_dict:
-        print_warning("The asset "+char_name+" hasn't been found in the project char list")
-        return
-
-    cornea_shapes = cornea_dict[match.group(1)]
-
     try:
         shape = asset.getShape()
         if shape.type() != "aiStandIn": raise Exception()
     except:
         print_warning("The last element selected must be the asset standin")
         return
+
+    asset_name = asset.name()
+    match = re.match(r"^(?:(.*)_[0-9]{2}|(.*))$",asset_name)
+    char_name = match.group(1) if match.group(1) is not None else match.group(2)
+    if char_name not in cornea_dict:
+        print_warning("The asset "+char_name+" hasn't been found in the project char list")
+        cornea_shapes = None
+    else:
+        cornea_shapes = cornea_dict[match.group(1)]
+
     lights = listRelatives(selection[:-1], fullPath=True)
-    return shape,cornea_shapes, lights
+    return shape, cornea_shapes, lights
 
 
 def __light_link_cornea(shape, cornea_shapes, lights):
@@ -42,7 +43,7 @@ def __light_link_cornea(shape, cornea_shapes, lights):
     string = string.replace(",", "")
     light_expression = "['" + string + "']"
     # Corneas Expresion
-    corneas_expression = "*"+ "* or *".join(cornea_shapes)+"*"
+    corneas_expression = "*" if cornea_shapes is None else "*"+ "* or *".join(cornea_shapes)+"*"
     # AiSetParameter
     ai_set_parameter = createNode("aiSetParameter")
     # Light group
