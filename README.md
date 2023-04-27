@@ -7,14 +7,6 @@ Asset Linker Cornea is a tool that links lights to corneas of a character standi
 You will need some files that several Illogic tools need. You can get them via this link :
 https://github.com/Illogicstudios/common
 
-
-You must specify the correct path of the installation folder in the ```template_main.py``` file :
-```python
-if __name__ == '__main__':
-    # TODO specify the right path
-    install_dir = 'PATH/TO/ass_link_cornea'
-    # [...]
-```
 You also must add a file named ```cornea_by_char.py``` (see ```template_cornea_by_char.py```) that contains a
 dictionnary of all the cornea name for a character in a project :
 ```python
